@@ -1,24 +1,33 @@
 import { useState } from "react";
 
 export const Register = () => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  async function register(ev: { preventDefault: () => void }) {
+  async function register(ev) {
     ev.preventDefault();
     await fetch("http://localhost:4000/register", {
       method: "POST",
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ username, password }),
       headers: { "Content-Type": "application/json" },
     });
   }
   return (
     <section className="container flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
       <div className="flex flex-col items-center justify-center px-6 py-8">
-        <div className="w-full bg-slate-100 rounded-lg">
+        <div className="w-full rounded-lg border-2 border-slate-200">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="mr-11 ml-11 text-3xl text-zinc-600 text-center">
-              Créez un <span className="text-blue-800">compte</span>
+            <h1 className="text-2xl text-center">
+              <span className="text-blue-500">Y</span>
+              <span className="text-red-500">O</span>
+              <span className="text-yellow-500">O</span>
+              <span className="text-green-500">P</span>
+              <span className="text-red-500">I</span>
             </h1>
+            <h3 className="text-3xl text-center">
+              <span className="text-white">_____</span>
+              Créer un compte Yoopi
+              <span className="text-white">_____</span>
+            </h3>
             <form className="space-y-4 md:space-y-6" onSubmit={register}>
               <div>
                 <label htmlFor="email" className="text-zinc-400">
@@ -29,8 +38,8 @@ export const Register = () => {
                   name="email"
                   id="email"
                   placeholder="name@company.com"
-                  value={email}
-                  onChange={(ev) => setEmail(ev.target.value)}
+                  value={username}
+                  onChange={(ev) => setUsername(ev.target.value)}
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                 ></input>
               </div>
@@ -73,7 +82,7 @@ export const Register = () => {
                   <div className="ml-3 text-sm">
                     <label htmlFor="remember" className="text-gray-500">
                       J'accepte les{" "}
-                      <span className="text-yellow-600 hover:underline">
+                      <span className="text-blue-600 hover:underline">
                         <a href=" ">termes et conditions</a>
                       </span>
                     </label>
@@ -83,7 +92,7 @@ export const Register = () => {
               <div className="flex justify-center">
                 <button
                   type="submit"
-                  className="bg-blue-800 text-slate-100 p-3 rounded-md hover:bg-blue-600"
+                  className="bg-blue-500 text-slate-100 p-3 rounded-md hover:bg-green-500"
                 >
                   créer un compte
                 </button>
